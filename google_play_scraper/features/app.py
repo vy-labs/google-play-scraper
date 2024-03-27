@@ -46,10 +46,12 @@ def parse_dom(dom: str, app_id: str, url: str) -> Dict[str, Any]:
                     break
         else:
             content = spec.extract_content(dataset)
-
             result[k] = content
 
     result["appId"] = app_id
     result["url"] = url
-
+    if "more_by" in result["more_by_or_similar_apps"]:
+        result["similarApps"] = None
+    else:
+        result["moreByDeveloper"] = None
     return result

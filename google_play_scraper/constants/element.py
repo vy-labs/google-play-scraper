@@ -117,6 +117,7 @@ class ElementSpecs:
         "website": ElementSpec(5, [1, 2, 69, 0, 5, 2]),
         "whatsNew": ElementSpec(5, [1, 2, 144, 1, 1], unescape_text),
         "similarApps": ElementSpec(6, [1, 1, 0, 21, 0], lambda container: [item[0][0] for item in container], []),
+        "moreByDeveloper": ElementSpec(6, [1, 1, 0, 21, 0], lambda container: [item[0][0] for item in container], []),
         "more_by_or_similar_apps": ElementSpec(6, [1, 1, 0, 3, 1, 0, 0])
         # "editorsChoice": ElementSpec(5, [0, 12, 15, 0], bool, False),
         # "similarApps": ElementSpec(
