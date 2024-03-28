@@ -1,20 +1,18 @@
 from datetime import datetime
-
-from google_play_scraper.utils.data_processors import unescape_text
-
 from typing import Callable, List, Any, Optional
 
 from google_play_scraper.constants.regex import Regex
 from google_play_scraper.utils import nested_lookup
+from google_play_scraper.utils.data_processors import unescape_text
 
 
 class ElementSpec:
     def __init__(
-        self,
-        ds_num: Optional[int],
-        data_map: List[int],
-        post_processor: Callable = None,
-        fallback_value: Any = None,
+            self,
+            ds_num: Optional[int],
+            data_map: List[int],
+            post_processor: Callable = None,
+            fallback_value: Any = None,
     ):
         self.ds_num = ds_num
         self.data_map = data_map
@@ -68,16 +66,16 @@ class ElementSpecs:
         ),
         "price": ElementSpec(
             5, [1, 2, 57, 0, 0, 0, 0, 1, 0, 0], lambda price: (
-                price / 1000000) or 0
+                                                                      price / 1000000) or 0
         ),
         "free": ElementSpec(5, [1, 2, 57, 0, 0, 0, 0, 1, 0, 0], lambda s: s == 0),
         "currency": ElementSpec(5, [1, 2, 57, 0, 0, 0, 0, 1, 0, 1]),
-        "sale": ElementSpec(4,  [0, 2, 0, 0, 0, 14, 0, 0], bool, False),
-        "saleTime": ElementSpec(4,  [0, 2, 0, 0, 0, 14, 0, 0]),
+        "sale": ElementSpec(4, [0, 2, 0, 0, 0, 14, 0, 0], bool, False),
+        "saleTime": ElementSpec(4, [0, 2, 0, 0, 0, 14, 0, 0]),
         "originalPrice": ElementSpec(
             3, [0, 2, 0, 0, 0, 1, 1, 0], lambda price: (price / 1000000) or 0
         ),
-        "saleText": ElementSpec(4,  [0, 2, 0, 0, 0, 14, 1]),
+        "saleText": ElementSpec(4, [0, 2, 0, 0, 0, 14, 1]),
         "offersIAP": ElementSpec(5, [1, 2, 19, 0], bool, False),
         "inAppProductPrice": ElementSpec(5, [1, 2, 19, 0]),
         # "size": ElementSpec(8, [0]),
@@ -98,7 +96,7 @@ class ElementSpecs:
             5, [1, 2, 78, 0], lambda container: [item[3][2]
                                                  for item in container], []
         ),
-        "video": ElementSpec(5, [1, 2, 100, 0, 0, 3, 2]),
+        "videoUrl": ElementSpec(5, [1, 2, 100, 0, 0, 3, 2]),
         "videoImage": ElementSpec(5, [1, 2, 100, 1, 0, 3, 2]),
         "contentRating": ElementSpec(5, [1, 2, 9, 0]),
         "contentRatingDescription": ElementSpec(5, [1, 2, 9, 2, 1]),
@@ -114,6 +112,13 @@ class ElementSpecs:
         "comments": ElementSpec(
             9, [0], lambda container: [item[4] for item in container], []
         ),
+        "supportPhoneNumber": ElementSpec(5, [1, 2, 69, 3]),
+        "supportEmail": ElementSpec(5, [1, 2, 69, 1, 0]),
+        "website": ElementSpec(5, [1, 2, 69, 0, 5, 2]),
+        "whatsNew": ElementSpec(5, [1, 2, 144, 1, 1], unescape_text),
+        "similarApps": ElementSpec(6, [1, 1, 0, 21, 0], lambda container: [item[0][0] for item in container], []),
+        "moreByDeveloper": ElementSpec(6, [1, 1, 0, 21, 0], lambda container: [item[0][0] for item in container], []),
+        "more_by_or_similar_apps": ElementSpec(6, [1, 1, 0, 3, 1, 0, 0])
         # "editorsChoice": ElementSpec(5, [0, 12, 15, 0], bool, False),
         # "similarApps": ElementSpec(
         #     7,
@@ -155,22 +160,22 @@ class ElementSpecs:
         None, [2], lambda container: sorted([item[1] for item in container])
     )
     Searchresult = {
-        "appId": ElementSpec(None, [0,0,0]),
-        "icon": ElementSpec(None, [0,1,3,2]),
-        "screenshots": ElementSpec(None, [0,2], lambda container: [item[3][2]
+        "appId": ElementSpec(None, [0, 0, 0]),
+        "icon": ElementSpec(None, [0, 1, 3, 2]),
+        "screenshots": ElementSpec(None, [0, 2], lambda container: [item[3][2]
                                                                     for item in container], []),
-        "title": ElementSpec(None, [0,3]),
-        "score": ElementSpec(None, [0,4,1]),
-        "genre": ElementSpec(None, [0,5]),
-        "price": ElementSpec(None, [0,8,1,0,0], lambda price: (
-                price / 1000000) or 0
-        ),
-        "free": ElementSpec(None, [0,8,1,0,0], lambda s: s == 0),
-        "currency": ElementSpec(None, [0,8,1,0,1]),
-        "video": ElementSpec(None, [0,12,0,0,3,2]),
-        "videoImage": ElementSpec(None, [0,12,0,3,3,2]),
-        "description": ElementSpec(None, [0,13,1], unescape_text),
-        "descriptionHTML": ElementSpec(None, [0,13,1]),
-        "developer": ElementSpec(None, [0,14]),
-        "installs": ElementSpec(None, [0,15])
+        "title": ElementSpec(None, [0, 3]),
+        "score": ElementSpec(None, [0, 4, 1]),
+        "genre": ElementSpec(None, [0, 5]),
+        "price": ElementSpec(None, [0, 8, 1, 0, 0], lambda price: (
+                                                                          price / 1000000) or 0
+                             ),
+        "free": ElementSpec(None, [0, 8, 1, 0, 0], lambda s: s == 0),
+        "currency": ElementSpec(None, [0, 8, 1, 0, 1]),
+        "video": ElementSpec(None, [0, 12, 0, 0, 3, 2]),
+        "videoImage": ElementSpec(None, [0, 12, 0, 3, 3, 2]),
+        "description": ElementSpec(None, [0, 13, 1], unescape_text),
+        "descriptionHTML": ElementSpec(None, [0, 13, 1]),
+        "developer": ElementSpec(None, [0, 14]),
+        "installs": ElementSpec(None, [0, 15])
     }
