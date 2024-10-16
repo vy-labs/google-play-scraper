@@ -50,8 +50,8 @@ class ElementSpecs:
         "minInstalls": ElementSpec(5, [1, 2, 13, 1]),
         "realInstalls": ElementSpec(5, [1, 2, 13, 2]),
         "score": ElementSpec(5, [1, 2, 51, 0, 1]),
-        "reviews": ElementSpec(5, [1, 2, 51, 2, 1]),
-        "rating": ElementSpec(5, [1, 2, 51, 3, 1]),
+        "rating": ElementSpec(5, [1, 2, 51, 2, 1]),
+        "reviews": ElementSpec(5, [1, 2, 51, 3, 1]),
         "histogram": ElementSpec(
             5,
             [1, 2, 51, 1],
