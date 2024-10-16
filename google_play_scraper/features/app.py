@@ -50,7 +50,7 @@ def parse_dom(dom: str, app_id: str, url: str) -> Dict[str, Any]:
 
     result["appId"] = app_id
     result["url"] = url
-    if result.get("more_by_or_similar_apps") and "Similar apps" in result["more_by_or_similar_apps"]:
+    if result.get("moreByOrSimilarApps") and "Similar apps" in result["moreByOrSimilarApps"]:
         result["moreByDeveloper"] = None
     else:
         result["similarApps"] = None

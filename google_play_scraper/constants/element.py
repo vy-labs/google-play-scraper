@@ -122,7 +122,7 @@ class ElementSpecs:
         "whatsNew": ElementSpec(5, [1, 2, 144, 1, 1], unescape_text),
         "similarApps": ElementSpec(7, [1, 1, 0, 21, 0], lambda container: [item[0][0] for item in container], []),
         "moreByDeveloper": ElementSpec(7, [1, 1, 0, 21, 0], lambda container: [item[0][0] for item in container], []),
-        "more_by_or_similar_apps": ElementSpec(7, [1, 1, 0, 21, 1, 0])
+        "moreByOrSimilarApps": ElementSpec(7, [1, 1, 0, 21, 1, 0])
         # "editorsChoice": ElementSpec(5, [0, 12, 15, 0], bool, False),
         # "similarApps": ElementSpec(
         #     7,
