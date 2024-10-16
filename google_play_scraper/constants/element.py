@@ -82,10 +82,14 @@ class ElementSpecs:
         # "androidVersion": ElementSpec(5, [1, 2, 140, 1, 1, 0, 0, 1], lambda s: s.split()[0]),
         # "androidVersionText": ElementSpec(5, [1, 2, 140, 1, 1, 0, 0, 1]),
         "developer": ElementSpec(5, [1, 2, 68, 0]),
+        "developerIndividual": ElementSpec(5, [1, 2, 69, 4, 0]),
         "developerId": ElementSpec(5, [1, 2, 68, 1, 4, 2], lambda s: s.split("id=")[1]),
         "developerEmail": ElementSpec(5, [1, 2, 69, 1, 0]),
+        "developerIndividualEmail": ElementSpec(5, [1, 2, 69, 4, 1, 0]),
         "developerWebsite": ElementSpec(5, [1, 2, 69, 0, 5, 2]),
+        "developerIndividualWebsite": ElementSpec(5, [1, 2, 69, 0, 5, 2]),
         "developerAddress": ElementSpec(5, [1, 2, 69, 2, 0]),
+        "developerIndividualAddress": ElementSpec(5, [1, 2, 69, 4, 2, 0]),
         "privacyPolicy": ElementSpec(5, [1, 2, 99, 0, 5, 2]),
         # "developerInternalID": ElementSpec(5, [0, 12, 5, 0, 0]),
         "genre": ElementSpec(5, [1, 2, 79, 0, 0, 0]),
@@ -116,9 +120,9 @@ class ElementSpecs:
         "supportEmail": ElementSpec(5, [1, 2, 69, 1, 0]),
         "website": ElementSpec(5, [1, 2, 69, 0, 5, 2]),
         "whatsNew": ElementSpec(5, [1, 2, 144, 1, 1], unescape_text),
-        "similarApps": ElementSpec(6, [1, 1, 0, 21, 0], lambda container: [item[0][0] for item in container], []),
-        "moreByDeveloper": ElementSpec(6, [1, 1, 0, 21, 0], lambda container: [item[0][0] for item in container], []),
-        "more_by_or_similar_apps": ElementSpec(6, [1, 1, 0, 3, 1, 0, 0])
+        "similarApps": ElementSpec(7, [1, 1, 0, 21, 0], lambda container: [item[0][0] for item in container], []),
+        "moreByDeveloper": ElementSpec(7, [1, 1, 0, 21, 0], lambda container: [item[0][0] for item in container], []),
+        "moreByOrSimilarApps": ElementSpec(7, [1, 1, 0, 21, 1, 0])
         # "editorsChoice": ElementSpec(5, [0, 12, 15, 0], bool, False),
         # "similarApps": ElementSpec(
         #     7,
